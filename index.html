@@ -2,14 +2,89 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Погода</title>
+  <title>Погода і особисті дані</title>
+  <style>
+    /* Общие стили */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    /* Контейнеры */
+    .section {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+      max-width: 400px;
+      width: 100%;
+    }
+    /* Поля и кнопки */
+    .section input[type="text"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccd0d5;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color .2s;
+    }
+    .section input[type="text"]:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+    .section button {
+      background: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .section button:hover {
+      background: #2980b9;
+    }
+    /* Результаты */
+    #result, #userInfo {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 4px;
+      min-height: 50px;
+      font-size: 0.95rem;
+      color: #2c3e50;
+    }
+  </style>
 </head>
 <body>
-  <h1>Отримати погоду</h1>
-  <input type="text" id="cityInput" placeholder="Введіть місто" />
-  <button onclick="getWeather()">Дізнатись погоду</button>
 
-  <div id="result"></div>
+  <div class="section">
+    <h1>Отримати погоду</h1>
+    <input type="text" id="cityInput" placeholder="Введіть місто" />
+    <button onclick="getWeather()">Дізнатись погоду</button>
+    <div id="result"></div>
+  </div>
+
+  <div class="section">
+    <h1>Отримати особисті дані</h1>
+    <input type="text" id="loginInput" placeholder="Введіть логін Moodle" />
+    <button onclick="getUserInfo()">Отримати дані</button>
+    <div id="userInfo"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

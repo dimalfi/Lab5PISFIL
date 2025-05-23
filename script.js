@@ -1,4 +1,4 @@
-const apiKey = '91df94ee0cbc295d4f9a49a26b74628a';
+const apiKey = '91df94ee0cbc295d4f9a49a26b74628a'; // заміни, якщо ключ не працює
 
 function getWeather() {
   const city = document.getElementById('cityInput').value.trim();
@@ -21,5 +21,25 @@ function getWeather() {
     })
     .catch(error => {
       document.getElementById('result').innerHTML = `<p style="color:red;">${error.message}</p>`;
+    });
+}
+
+function getUserInfo() {
+  const login = document.getElementById('loginInput').value;
+  fetch(`/info/${login}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.error) {
+        document.getElementById('userInfo').innerHTML = `<p style="color:red;">${data.error}</p>`;
+      } else {
+        document.getElementById('userInfo').innerHTML = `
+          <h3>Особисті дані:</h3>
+          <p>Прізвище: ${data["прізвище"]}</p>
+          <p>Імя: ${data["імя"]}</p>
+          <p>Курс: ${data["курс"]}</p>
+          <p>Група: ${data["група"]}</p>
+          <p>Логін: ${data["логін"]}</p>
+        `;
+      }
     });
 }
